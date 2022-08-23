@@ -6,82 +6,129 @@
         xmlns:local="clr-namespace:CadastralPlanTerritoryWPF"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="showIdTemplate">
+                <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown">
+                    <CheckBox></CheckBox>
+                    <TextBlock Text="{Binding Path=Id}"/>
+                </StackPanel>          
+        </DataTemplate>
+        <Style TargetType="ListBox">
+            <Setter Property="BorderThickness" Value="0" />
+        </Style>
+    </Window.Resources>
     <Grid ShowGridLines="True">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*"></ColumnDefinition>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="0.75*"></ColumnDefinition>
         </Grid.ColumnDefinitions>        
-        <TreeView Grid.Column="0">
-            <TreeViewItem Header="Земельные участки" ItemsSource="{Binding Parcels}">
-                <TreeViewItem.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox></CheckBox>
-                            <TextBlock Text="{Binding Path=Id}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeViewItem.ItemTemplate>
-            </TreeViewItem>
+        <TreeView Grid.Column="0">          
+            <TreeViewItem Header="Земельные участки">
+                <ListBox ItemsSource="{Binding Parcels}" 
+                         ItemTemplate="{StaticResource showIdTemplate}"
+                         SelectedItem="{Binding SelectedParcel}">
+                </ListBox>
+            </TreeViewItem>            
             <TreeViewItem Header="Объекты недвижимости">
-                <TreeViewItem Header="Постройки" ItemsSource="{Binding Builds}">
-                    <TreeViewItem.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox></CheckBox>
-                                <TextBlock Text="{Binding Path=Id}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </TreeViewItem.ItemTemplate>
+                <TreeViewItem Header="Постройки">
+                    <ListBox ItemsSource="{Binding Builds}" 
+                         ItemTemplate="{StaticResource showIdTemplate}"
+                         SelectedItem="{Binding SelectedBuild}">
+                    </ListBox>                    
                 </TreeViewItem>
-                <TreeViewItem Header="Конструкции" ItemsSource="{Binding Constructions}">
-                    <TreeViewItem.ItemTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal">
-                                <CheckBox></CheckBox>
-                                <TextBlock Text="{Binding Path=Id}" />
-                            </StackPanel>
-                        </DataTemplate>
-                    </TreeViewItem.ItemTemplate>
+                <TreeViewItem Header="Конструкции">
+                    <ListBox ItemsSource="{Binding Constructions}" 
+                         ItemTemplate="{StaticResource showIdTemplate}"
+                         SelectedItem="{Binding SelectedConstruction}">
+                    </ListBox>                    
                 </TreeViewItem>
             </TreeViewItem>
-            <TreeViewItem Header="Пространственные данные" ItemsSource="{Binding SpatialDataEntities}">
-                <TreeViewItem.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox></CheckBox>
-                            <TextBlock Text="{Binding Path=Id}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeViewItem.ItemTemplate>
+            <TreeViewItem Header="Пространственные данные">
+                <ListBox ItemsSource="{Binding SpatialDataEntities}" 
+                         ItemTemplate="{StaticResource showIdTemplate}"
+                         SelectedItem="{Binding SelectedSpatialDataEntity}">
+                </ListBox>                
             </TreeViewItem>
-            <TreeViewItem Header="Муниципальные границы" ItemsSource="{Binding Bounds}">
-                <TreeViewItem.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox></CheckBox>
-                            <TextBlock Text="{Binding Path=Id}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeViewItem.ItemTemplate>
+            <TreeViewItem Header="Муниципальные границы">
+                <ListBox ItemsSource="{Binding Bounds}" 
+                         ItemTemplate="{StaticResource showIdTemplate}"
+                         SelectedItem="{Binding SelectedBound}">
+                </ListBox>                
             </TreeViewItem>
-            <TreeViewItem Header="Зоны и территории" ItemsSource="{Binding Zones}">
-                <TreeViewItem.ItemTemplate>
-                    <DataTemplate>
-                        <StackPanel Orientation="Horizontal">
-                            <CheckBox></CheckBox>
-                            <TextBlock Text="{Binding Path=Id}" />
-                        </StackPanel>
-                    </DataTemplate>
-                </TreeViewItem.ItemTemplate>
+            <TreeViewItem Header="Зоны и территории">
+                <ListBox ItemsSource="{Binding Zones}" 
+                         ItemTemplate="{StaticResource showIdTemplate}"
+                         SelectedItem="{Binding SelectedZone}">
+                </ListBox>                
             </TreeViewItem>
         </TreeView>
         <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
         HorizontalAlignment="Center" VerticalAlignment="Stretch" />
-        <StackPanel Grid.Column="2" DataContext="{Binding SelectedParcel}">
-            <TextBlock Text="Выбранный элемент"  />
-            <TextBlock Text="Идентификатор" />
-            <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
+        <StackPanel Grid.Column="2">
+            <!-- ParcelInfo -->
+            <StackPanel x:Name="ParcelInfo" DataContext="{Binding SelectedParcel}" Visibility="Collapsed">
+                <TextBlock Text="Идентификатор" />
+                <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Код типа" />
+                <TextBox Text="{Binding object.common_data.type.code, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Тип" />
+                <TextBox Text="{Binding object.common_data.type.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Подтип (тип пользования)" />
+                <TextBox Text="{Binding object.subtype.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+            </StackPanel>
+
+            <!-- BuildInfo -->
+            <StackPanel x:Name="BuildInfo" DataContext="{Binding SelectedBuild}" Visibility="Collapsed">
+                <TextBlock Text="Идентификатор" />
+                <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Код типа" />
+                <TextBox Text="{Binding object.common_data.type.code, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Тип" />
+                <TextBox Text="{Binding object.common_data.type.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Площадь" />
+                <TextBox Text="{Binding params.area, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+            </StackPanel>
+
+            <!-- ConstructionInfo -->
+            <StackPanel x:Name="ConstructionInfo" DataContext="{Binding SelectedConstruction}" Visibility="Collapsed">
+                <TextBlock Text="Идентификатор" />
+                <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Код типа" />
+                <TextBox Text="{Binding object.common_data.type.code, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Тип" />
+                <TextBox Text="{Binding object.common_data.type.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+                <TextBlock Text="Назначение" />
+                <TextBox Text="{Binding params.purpose, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True"/>
+            </StackPanel>
+
+            <!-- SpatialDataEntityInfo -->
+            <StackPanel x:Name="SpatialDataEntityInfo" DataContext="{Binding SelectedSpatialDataEntity}" Visibility="Collapsed">
+                <TextBlock Text="Идентификатор" />
+                <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+            </StackPanel>
+
+            <!-- BoundInfo -->
+            <StackPanel x:Name="BoundInfo" DataContext="{Binding SelectedBound}" Visibility="Collapsed">
+                <TextBlock Text="Идентификатор" />
+                <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Дата регистрации" />
+                <TextBox Text="{Binding record_info.registration_date, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Тип границы" />
+                <TextBox Text="{Binding b_object_municipal_boundary.b_object.type_boundary.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+            </StackPanel>
+
+            <!-- ZoneInfo -->
+            <StackPanel x:Name="ZoneInfo" DataContext="{Binding SelectedZone}" Visibility="Collapsed">
+                <TextBlock Text="Идентификатор" />
+                <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Дата регистрации" />
+                <TextBox Text="{Binding record_info.registration_date, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Тип границы" />
+                <TextBox Text="{Binding b_object_zones_and_territories.b_object.type_boundary.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+                <TextBlock Text="Тип зоны" />
+                <TextBox Text="{Binding b_object_zones_and_territories.type_zone.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
+            </StackPanel>            
         </StackPanel>
     </Grid>
 </Window>

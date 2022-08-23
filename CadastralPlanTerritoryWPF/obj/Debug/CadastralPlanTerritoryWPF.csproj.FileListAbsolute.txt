@@ -1,3 +1,4 @@
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\xml\24_21_1003001_2017-05-29_kpt11.xml
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\CadastralPlanTerritoryWPF.exe.config
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\CadastralPlanTerritoryWPF.exe
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\CadastralPlanTerritoryWPF.pdb
@@ -12,5 +13,4 @@ D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.csproj.CoreCompileInputs.cache
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.exe
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.pdb
-D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\xml\24_21_1003001_2017-05-29_kpt11.xml
 D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.csprojAssemblyReference.cache

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace CadastralPlanTerritoryWPF.Models
 {
-    interface IHavingId<T>
+    public interface IHavingId<T>
     {
-        T Id { get; }
+        T Id { get; set; }
     }
 }

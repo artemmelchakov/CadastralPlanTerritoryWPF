@@ -428,14 +428,18 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "land_record")]
     public partial class Parcel : INotifyPropertyChanged, IHavingId<string>
     {
-        public string Id => this.@object.common_data.cad_number;
-
         public event PropertyChangedEventHandler PropertyChanged;
         public void OnPropertyChanged([CallerMemberName]string prop = "")
         {
             if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));            
         }
+
+        public string Id
+        {
+            get { return this.@object.common_data.cad_number; }
+            set { OnPropertyChanged("Id"); }
+        }        
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataLand_recordObject objectField;
 
@@ -2020,9 +2024,23 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "build_record")]
-    public partial class Build : IHavingId<string>
+    public partial class Build : INotifyPropertyChanged, IHavingId<string>
     {
-        public string Id => this.@object.common_data.cad_number;
+        public string Id
+        {
+            get { return this.@object.common_data.cad_number; }
+            set 
+            {
+                OnPropertyChanged("Id");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataBuild_recordObject objectField;
 
@@ -2956,9 +2974,23 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "construction_record")]
-    public partial class Construction : IHavingId<string>
+    public partial class Construction : INotifyPropertyChanged, IHavingId<string>
     {
-        public string Id => this.@object.common_data.cad_number;
+        public string Id
+        {
+            get { return this.@object.common_data.cad_number; }
+            set 
+            {
+                OnPropertyChanged("Id");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataConstruction_recordObject objectField;
 
@@ -3421,9 +3453,23 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "entity_spatial")]
-    public partial class SpatialDataEntity : IHavingId<decimal>
+    public partial class SpatialDataEntity : INotifyPropertyChanged, IHavingId<decimal>
     {
-        public decimal Id => this.sk_id;
+        public decimal Id
+        {
+            get { return this.sk_id; }
+            set
+            {
+                OnPropertyChanged("Id");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         private decimal sk_idField;
 
@@ -3545,9 +3591,23 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "municipal_boundary_record")]
-    public partial class Bound : IHavingId<string>
+    public partial class Bound : INotifyPropertyChanged, IHavingId<string>
     {
-        public string Id => this.b_object_municipal_boundary.b_object.reg_numb_border;
+        public string Id
+        {
+            get { return this.b_object_municipal_boundary.b_object.reg_numb_border; }
+            set
+            {
+                OnPropertyChanged("Id");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockMunicipal_boundary_recordRecord_info record_infoField;
 
@@ -3928,9 +3988,23 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "zones_and_territories_record")]
-    public partial class Zone : IHavingId<string>
+    public partial class Zone : INotifyPropertyChanged, IHavingId<string>
     {
-        public string Id => this.b_object_zones_and_territories.b_object.reg_numb_border;
+        public string Id
+        {
+            get { return this.b_object_zones_and_territories.b_object.reg_numb_border; }
+            set
+            {
+                OnPropertyChanged("Id");
+            }
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockZones_and_territories_recordRecord_info record_infoField;
 

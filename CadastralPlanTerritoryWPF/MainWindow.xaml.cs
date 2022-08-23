@@ -27,5 +27,22 @@ namespace CadastralPlanTerritoryWPF
             InitializeComponent();
             DataContext = new AppViewModel();
         }
+
+        private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            var dataContext = (sender as StackPanel).DataContext;
+            this.ParcelInfo.Visibility = 
+                (dataContext is Parcel) ? Visibility.Visible : Visibility.Collapsed;
+            this.BuildInfo.Visibility = 
+                (dataContext is Build) ? Visibility.Visible : Visibility.Collapsed;
+            this.ConstructionInfo.Visibility = 
+                (dataContext is Construction) ? Visibility.Visible : Visibility.Collapsed;
+            this.SpatialDataEntityInfo.Visibility = 
+                (dataContext is SpatialDataEntity) ? Visibility.Visible : Visibility.Collapsed;
+            this.BoundInfo.Visibility = 
+                (dataContext is Bound) ? Visibility.Visible : Visibility.Collapsed;
+            this.ZoneInfo.Visibility = 
+                (dataContext is Zone) ? Visibility.Visible : Visibility.Collapsed;            
+        }
     }
 }

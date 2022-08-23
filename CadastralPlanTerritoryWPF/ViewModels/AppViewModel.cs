@@ -20,6 +20,7 @@ namespace CadastralPlanTerritoryWPF.ViewModels
         private Bound selectedBound;
         private Zone selectedZone;
 
+        
         public Parcel SelectedParcel
         {
             get { return selectedParcel; }
