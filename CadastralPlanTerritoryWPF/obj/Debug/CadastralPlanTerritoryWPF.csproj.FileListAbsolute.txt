@@ -1,0 +1,16 @@
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\CadastralPlanTerritoryWPF.exe.config
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\CadastralPlanTerritoryWPF.exe
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\CadastralPlanTerritoryWPF.pdb
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\MainWindow.g.cs
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\App.g.cs
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF_MarkupCompile.cache
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF_MarkupCompile.lref
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\MainWindow.baml
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.g.resources
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.Properties.Resources.resources
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.csproj.GenerateResource.cache
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.csproj.CoreCompileInputs.cache
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.exe
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.pdb
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\bin\Debug\xml\24_21_1003001_2017-05-29_kpt11.xml
+D:\Csharp projects\CadastralPlanTerritoryWPF\CadastralPlanTerritoryWPF\obj\Debug\CadastralPlanTerritoryWPF.csprojAssemblyReference.cache

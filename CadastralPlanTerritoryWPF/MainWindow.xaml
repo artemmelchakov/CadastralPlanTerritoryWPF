@@ -1,0 +1,87 @@
+﻿<Window x:Class="CadastralPlanTerritoryWPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CadastralPlanTerritoryWPF"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid ShowGridLines="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"></ColumnDefinition>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="0.75*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>        
+        <TreeView Grid.Column="0">
+            <TreeViewItem Header="Земельные участки" ItemsSource="{Binding Parcels}">
+                <TreeViewItem.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox></CheckBox>
+                            <TextBlock Text="{Binding Path=Id}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeViewItem.ItemTemplate>
+            </TreeViewItem>
+            <TreeViewItem Header="Объекты недвижимости">
+                <TreeViewItem Header="Постройки" ItemsSource="{Binding Builds}">
+                    <TreeViewItem.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox></CheckBox>
+                                <TextBlock Text="{Binding Path=Id}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </TreeViewItem.ItemTemplate>
+                </TreeViewItem>
+                <TreeViewItem Header="Конструкции" ItemsSource="{Binding Constructions}">
+                    <TreeViewItem.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <CheckBox></CheckBox>
+                                <TextBlock Text="{Binding Path=Id}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </TreeViewItem.ItemTemplate>
+                </TreeViewItem>
+            </TreeViewItem>
+            <TreeViewItem Header="Пространственные данные" ItemsSource="{Binding SpatialDataEntities}">
+                <TreeViewItem.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox></CheckBox>
+                            <TextBlock Text="{Binding Path=Id}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeViewItem.ItemTemplate>
+            </TreeViewItem>
+            <TreeViewItem Header="Муниципальные границы" ItemsSource="{Binding Bounds}">
+                <TreeViewItem.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox></CheckBox>
+                            <TextBlock Text="{Binding Path=Id}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeViewItem.ItemTemplate>
+            </TreeViewItem>
+            <TreeViewItem Header="Зоны и территории" ItemsSource="{Binding Zones}">
+                <TreeViewItem.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox></CheckBox>
+                            <TextBlock Text="{Binding Path=Id}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </TreeViewItem.ItemTemplate>
+            </TreeViewItem>
+        </TreeView>
+        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+        HorizontalAlignment="Center" VerticalAlignment="Stretch" />
+        <StackPanel Grid.Column="2" DataContext="{Binding SelectedParcel}">
+            <TextBlock Text="Выбранный элемент"  />
+            <TextBlock Text="Идентификатор" />
+            <TextBox Text="{Binding Id, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+    </Grid>
+</Window>
