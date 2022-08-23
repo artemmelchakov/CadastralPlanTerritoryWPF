@@ -20,8 +20,7 @@ namespace CadastralPlanTerritoryWPF.ViewModels
         private SpatialDataEntity selectedSpatialDataEntity;
         private Bound selectedBound;
         private Zone selectedZone;
-
-        
+                
         public Parcel SelectedParcel
         {
             get { return selectedParcel; }
@@ -77,6 +76,7 @@ namespace CadastralPlanTerritoryWPF.ViewModels
             }
         }
 
+        // Коллеции объектов, полученные из xml-файла
         public ObservableCollection<Parcel> Parcels { get; set; }
         public ObservableCollection<Build> Builds { get; set; }
         public ObservableCollection<Construction> Constructions { get; set; }
@@ -89,17 +89,28 @@ namespace CadastralPlanTerritoryWPF.ViewModels
         /// </summary>
         public ObservableCollection<IEntity> SelectedEntities { get; set; }
 
-
-        public void AddCheckedItemInList(object dataContext)
+        /// <summary>
+        /// Добавление в общий список отмеченных через CheckBox сущностей
+        /// </summary>
+        /// <param name="obj">Сохраняемый объект</param>
+        public void AddCheckedItemInList(object obj)
         {
-            if (dataContext is IEntity) SelectedEntities.Add((IEntity)dataContext);
+            if (obj is IEntity) SelectedEntities.Add((IEntity)obj);
         }
-        
-        public void RemoveCheckedItemFromList(object dataContext)
+        /// <summary>
+        /// Удаление из общего списка отмеченных через CheckBox сущностей
+        /// </summary>
+        /// <param name="obj">Удаляемый объект</param>
+        public void RemoveCheckedItemFromList(object obj)
         {
-            if (dataContext is IEntity) SelectedEntities.Remove((IEntity)dataContext);
+            if (obj is IEntity) SelectedEntities.Remove((IEntity)obj);
         }
 
+        /// <summary>
+        /// Конструктор модели предстваления. 
+        /// Здесь из каталога Data.Catalog в коллекции объектов модели предстваления
+        /// загружаются объекты
+        /// </summary>
         public AppViewModel() 
         {
             Parcels = 
@@ -138,6 +149,10 @@ namespace CadastralPlanTerritoryWPF.ViewModels
         }
 
         private RelayCommand saveInXmlCommand;
+        /// <summary>
+        /// Команда сохранения отмеченных через CheckBox сущностей 
+        /// в xml-файл
+        /// </summary>
         public RelayCommand SaveInXmlCommand
         {
             get

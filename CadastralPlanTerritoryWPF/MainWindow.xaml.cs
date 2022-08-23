@@ -28,9 +28,11 @@ namespace CadastralPlanTerritoryWPF
             DataContext = new AppViewModel();
         }
 
+        /// <summary>
+        /// При нажатии на элемент раскрывается та или иная форма
+        /// </summary>
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            //var dataContext = (sender as StackPanel).DataContext;
             var dataContext = (sender as FrameworkElement).DataContext;
             this.ParcelInfo.Visibility = 
                 (dataContext is Parcel) ? Visibility.Visible : Visibility.Collapsed;

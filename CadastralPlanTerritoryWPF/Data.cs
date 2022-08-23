@@ -49,10 +49,15 @@ namespace CadastralPlanTerritoryWPF
             return catalog;
         }
 
+        /// <summary>
+        /// Сохранение в xml-файл
+        /// </summary>
+        /// <param name="obj">Сохраняемый объект</param>
+        /// <param name="filename">Имя файла и путь к нему</param>
         public static void Save(object obj, string filename)
         {
             XmlSerializer xmlSerializer;
-            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            using (FileStream fs = new FileStream(filename, FileMode.Create))
             {
                 xmlSerializer = new XmlSerializer(obj.GetType());
                 xmlSerializer.Serialize(fs, obj);
