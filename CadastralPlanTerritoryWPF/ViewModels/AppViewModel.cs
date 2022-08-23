@@ -8,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Forms;
 
 namespace CadastralPlanTerritoryWPF.ViewModels
 {
@@ -81,7 +82,23 @@ namespace CadastralPlanTerritoryWPF.ViewModels
         public ObservableCollection<Construction> Constructions { get; set; }
         public ObservableCollection<SpatialDataEntity> SpatialDataEntities { get; set; }
         public ObservableCollection<Bound> Bounds { get; set; }
-        public ObservableCollection<Zone> Zones { get; set; }        
+        public ObservableCollection<Zone> Zones { get; set; }
+
+        /// <summary>
+        /// Выбранные через Checkbox сущности
+        /// </summary>
+        public ObservableCollection<IEntity> SelectedEntities { get; set; }
+
+
+        public void AddCheckedItemInList(object dataContext)
+        {
+            if (dataContext is IEntity) SelectedEntities.Add((IEntity)dataContext);
+        }
+        
+        public void RemoveCheckedItemFromList(object dataContext)
+        {
+            if (dataContext is IEntity) SelectedEntities.Remove((IEntity)dataContext);
+        }
 
         public AppViewModel() 
         {
@@ -116,6 +133,29 @@ namespace CadastralPlanTerritoryWPF.ViewModels
                 (
                     Data.Catalog.cadastral_blocks.cadastral_block.zones_and_territories_boundaries
                 );
+
+            SelectedEntities = new ObservableCollection<IEntity>();
+        }
+
+        private RelayCommand saveInXmlCommand;
+        public RelayCommand SaveInXmlCommand
+        {
+            get
+            {
+                return saveInXmlCommand ??
+                    (saveInXmlCommand = new RelayCommand(obj =>
+                    {
+                        SaveFileDialog saveFileDialog = new SaveFileDialog();
+                        saveFileDialog.InitialDirectory = Environment.CurrentDirectory;
+                        saveFileDialog.Filter = "xml files (*.xml)|*.xml|All files (*.*)|*.*";
+                        saveFileDialog.RestoreDirectory = true;
+                        if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                        {
+                            Data.Save(new XmlEntitiesWrap(SelectedEntities), saveFileDialog.FileName);
+                            System.Windows.MessageBox.Show("Файл " + saveFileDialog.FileName + " сохранен.");
+                        }                          
+                    }));
+            }
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

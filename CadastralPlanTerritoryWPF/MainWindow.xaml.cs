@@ -30,7 +30,8 @@ namespace CadastralPlanTerritoryWPF
 
         private void StackPanel_MouseDown(object sender, MouseButtonEventArgs e)
         {
-            var dataContext = (sender as StackPanel).DataContext;
+            //var dataContext = (sender as StackPanel).DataContext;
+            var dataContext = (sender as FrameworkElement).DataContext;
             this.ParcelInfo.Visibility = 
                 (dataContext is Parcel) ? Visibility.Visible : Visibility.Collapsed;
             this.BuildInfo.Visibility = 
@@ -43,6 +44,18 @@ namespace CadastralPlanTerritoryWPF
                 (dataContext is Bound) ? Visibility.Visible : Visibility.Collapsed;
             this.ZoneInfo.Visibility = 
                 (dataContext is Zone) ? Visibility.Visible : Visibility.Collapsed;            
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            var dataContext = (sender as FrameworkElement).DataContext;
+            (this.DataContext as AppViewModel).AddCheckedItemInList(dataContext);
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            var dataContext = (sender as FrameworkElement).DataContext;
+            (this.DataContext as AppViewModel).RemoveCheckedItemFromList(dataContext);
         }
     }
 }

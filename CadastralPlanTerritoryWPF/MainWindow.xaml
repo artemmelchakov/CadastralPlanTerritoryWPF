@@ -4,28 +4,36 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CadastralPlanTerritoryWPF"
-        mc:Ignorable="d"
+        mc:Ignorable="d"  
         Title="MainWindow" Height="450" Width="800">
     <Window.Resources>
         <DataTemplate x:Key="showIdTemplate">
-                <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown">
-                    <CheckBox></CheckBox>
-                    <TextBlock Text="{Binding Path=Id}"/>
-                </StackPanel>          
+            <StackPanel Orientation="Horizontal" MouseDown="StackPanel_MouseDown">
+                <CheckBox Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"></CheckBox>
+                <TextBlock Text="{Binding Path=Id}"/>
+            </StackPanel>              
         </DataTemplate>
         <Style TargetType="ListBox">
             <Setter Property="BorderThickness" Value="0" />
         </Style>
     </Window.Resources>
-    <Grid ShowGridLines="True">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.25*"></ColumnDefinition>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="0.75*"></ColumnDefinition>
-        </Grid.ColumnDefinitions>        
-        <TreeView Grid.Column="0">          
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25px"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="Выгрузить отмеченные в XML" Height="25px" Command="{Binding SaveInXmlCommand}"></MenuItem>
+        </Menu>
+        <TreeView Grid.Column="0" Grid.Row="1" VerticalAlignment="Stretch">          
             <TreeViewItem Header="Земельные участки">
-                <ListBox ItemsSource="{Binding Parcels}" 
+                <ListBox ItemsSource="{Binding Parcels}"
                          ItemTemplate="{StaticResource showIdTemplate}"
                          SelectedItem="{Binding SelectedParcel}">
                 </ListBox>
@@ -63,9 +71,9 @@
                 </ListBox>                
             </TreeViewItem>
         </TreeView>
-        <GridSplitter Grid.Column="1" ShowsPreview="False" Width="3"
+        <GridSplitter Grid.Column="1" Grid.Row="1" ShowsPreview="False" Width="3"
         HorizontalAlignment="Center" VerticalAlignment="Stretch" />
-        <StackPanel Grid.Column="2">
+        <StackPanel Grid.Column="2" Grid.Row="1"  VerticalAlignment="Stretch">            
             <!-- ParcelInfo -->
             <StackPanel x:Name="ParcelInfo" DataContext="{Binding SelectedParcel}" Visibility="Collapsed">
                 <TextBlock Text="Идентификатор" />
@@ -128,7 +136,7 @@
                 <TextBox Text="{Binding b_object_zones_and_territories.b_object.type_boundary.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
                 <TextBlock Text="Тип зоны" />
                 <TextBox Text="{Binding b_object_zones_and_territories.type_zone.value, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" />
-            </StackPanel>            
+            </StackPanel>
         </StackPanel>
     </Grid>
 </Window>

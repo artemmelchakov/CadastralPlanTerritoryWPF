@@ -48,5 +48,16 @@ namespace CadastralPlanTerritoryWPF
             }
             return catalog;
         }
+
+        public static void Save(object obj, string filename)
+        {
+            XmlSerializer xmlSerializer;
+            using (FileStream fs = new FileStream(filename, FileMode.OpenOrCreate))
+            {
+                xmlSerializer = new XmlSerializer(obj.GetType());
+                xmlSerializer.Serialize(fs, obj);
+                fs.Close();
+            }
+        }
     }
 }

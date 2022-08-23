@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace CadastralPlanTerritoryWPF.Models
 {
@@ -426,20 +427,21 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "land_record")]
-    public partial class Parcel : INotifyPropertyChanged, IHavingId<string>
-    {
-        public event PropertyChangedEventHandler PropertyChanged;
-        public void OnPropertyChanged([CallerMemberName]string prop = "")
-        {
-            if (PropertyChanged != null)
-                PropertyChanged(this, new PropertyChangedEventArgs(prop));            
-        }
-
+    public partial class Parcel : INotifyPropertyChanged, IHavingId<string>, IEntity
+    {        
+        [XmlIgnore]
         public string Id
         {
             get { return this.@object.common_data.cad_number; }
             set { OnPropertyChanged("Id"); }
-        }        
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public void OnPropertyChanged([CallerMemberName]string prop = "")
+        {
+            if (PropertyChanged != null)
+                PropertyChanged(this, new PropertyChangedEventArgs(prop));
+        }
 
         private extract_cadastral_plan_territoryCadastral_blocksCadastral_blockRecord_dataBase_dataLand_recordObject objectField;
 
@@ -2024,8 +2026,9 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "build_record")]
-    public partial class Build : INotifyPropertyChanged, IHavingId<string>
+    public partial class Build : INotifyPropertyChanged, IHavingId<string>, IEntity
     {
+        [XmlIgnore]
         public string Id
         {
             get { return this.@object.common_data.cad_number; }
@@ -2974,8 +2977,9 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "construction_record")]
-    public partial class Construction : INotifyPropertyChanged, IHavingId<string>
+    public partial class Construction : INotifyPropertyChanged, IHavingId<string>, IEntity
     {
+        [XmlIgnore]
         public string Id
         {
             get { return this.@object.common_data.cad_number; }
@@ -3453,8 +3457,9 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "entity_spatial")]
-    public partial class SpatialDataEntity : INotifyPropertyChanged, IHavingId<decimal>
+    public partial class SpatialDataEntity : INotifyPropertyChanged, IHavingId<decimal>, IEntity
     {
+        [XmlIgnore]
         public decimal Id
         {
             get { return this.sk_id; }
@@ -3591,8 +3596,9 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "municipal_boundary_record")]
-    public partial class Bound : INotifyPropertyChanged, IHavingId<string>
+    public partial class Bound : INotifyPropertyChanged, IHavingId<string>, IEntity
     {
+        [XmlIgnore]
         public string Id
         {
             get { return this.b_object_municipal_boundary.b_object.reg_numb_border; }
@@ -3988,8 +3994,9 @@ namespace CadastralPlanTerritoryWPF.Models
     [System.SerializableAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
     [System.Xml.Serialization.XmlTypeAttribute(TypeName = "zones_and_territories_record")]
-    public partial class Zone : INotifyPropertyChanged, IHavingId<string>
+    public partial class Zone : INotifyPropertyChanged, IHavingId<string>, IEntity
     {
+        [XmlIgnore]
         public string Id
         {
             get { return this.b_object_zones_and_territories.b_object.reg_numb_border; }
